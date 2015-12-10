@@ -15,7 +15,11 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    route_manager.cpp \
+    route_manager_adp.cpp
 
 HEADERS += \
-    ../route_manager_adp.h
+    ../route_manager_adp.h \
+    route_manager.h \
+    route_manager_adp.h
