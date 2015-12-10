@@ -1,0 +1,26 @@
+<interface name="sn.ornap.nvsd.NavSensor.Data">
+	<signal name="PositionFix">
+		<arg name="lat" type="d"/>
+		<arg name="lon" type="d"/>
+		<arg name="alt" type="d"/>
+		<arg name="v_lat" type="d"/>
+		<arg name="v_lon" type="d"/>
+		<arg name="v_alt" type="d"/>
+		<arg name="date" type="u"/>
+		<arg name="time" type="u"/>
+		<arg name="rms2d" type="d"/>
+		<arg name="status" type="y"/>
+	</signal>
+	<signal name="PositionPrecision">
+		<arg name="hdop" type="d"/>
+		<arg name="vdop" type="d"/>
+		<arg name="pdop" type="d"/>
+		<arg name="tdop" type="d"/>
+		<arg name="fix_rms_lat" type="d"/>
+		<arg name="fix_rms_lon" type="d"/>
+		<arg name="fix_rms_alt" type="d"/>
+		<arg name="v_rms_lat" type="d"/>
+		<arg name="v_rms_lon" type="d"/>
+		<arg name="v_rms_alt" type="d"/>
+	</signal>
+</interface>

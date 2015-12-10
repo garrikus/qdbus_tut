@@ -1,0 +1,14 @@
+<interface name="sn.ornap.navd.route">
+	<method name="WptGet">
+		<arg name="lat" type="d" direction="out"/>
+		<arg name="lon" type="d" direction="out"/>
+	</method>
+	<method name="WptSet">
+		<arg name="lat" type="d" direction="in"/>
+		<arg name="lon" type="d" direction="in"/>
+	</method>
+	<signal name="Data">
+		<arg name="deltaLat" type="d"/>
+		<arg name="deltaLon" type="d"/>
+	</signal>
+</interface>
