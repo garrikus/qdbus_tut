@@ -2,13 +2,18 @@
 #define ROUTE_CONTROLS_H
 
 #include <QObject>
+#include <QDBusContext>
+#include <QString>
 #include <route_controls_adp.h>
 
-class RouteControls : public QObject
+class RouteControls : public QObject, protected QDBusContext
 {
     Q_OBJECT
 public:
     RouteControls();
+    QString getDBusPath() const;
+    void unRegisterOnDbus(QDBusConnection);
+    bool registerOnDbusWithId(QDBusConnection, unsigned);
 
 public Q_SLOTS:
     void WptSet(double lat, double lon);
@@ -18,6 +23,8 @@ private:
 
     double m_lat;
     double m_lon;
+
+    unsigned m_dbusId;
 };
 
 

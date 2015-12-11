@@ -7,10 +7,22 @@ RouteManager::RouteManager()
 
 QDBusObjectPath RouteManager::StartNav(double lat, double lon)
 {
-    return QDBusObjectPath("/routes/useless_route");
+    for(unsigned i = 0; i < maxRoutesManaged; ++i)
+        if (routeArray[i].registerOnDbusWithId(connection(), i+1)) {
+            routeArray[i].WptSet(lat, lon);
+            return QDBusObjectPath(routeArray[i].getDBusPath());
+        }
+
+    sendErrorReply(QDBusError::Failed, "Cant register another route object.");
+    return QDBusObjectPath("/");
 }
 
 void RouteManager::StopNav(const QDBusObjectPath &route_path)
 {
+    for(unsigned i = 0; i < maxRoutesManaged; ++i)
+        if (route_path.path() == routeArray[i].getDBusPath()) {
+            routeArray[i].unRegisterOnDbus(connection());
+        }
+
     return;
 }
