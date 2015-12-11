@@ -37,6 +37,10 @@ double RouteControlsAdaptor::WptGet(double &lon)
 {
     // handle method call sn.ornap.navd.route.WptGet
     //return static_cast<YourObjectType *>(parent())->WptGet(lon);
+
+    double lat;
+    QMetaObject::invokeMethod(parent(), "WptGet", Q_ARG(double &, lat), Q_ARG(double &, lon));
+    return lat;
 }
 
 void RouteControlsAdaptor::WptSet(double lat, double lon)
