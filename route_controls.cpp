@@ -44,6 +44,12 @@ void RouteControls::WptGet(double &lat, double &lon)
     lon = m_lon;
 }
 
+void RouteControls::processIncomingFix(double lat, double lon, double alt, double v_lat, double v_lon, double v_alt, uint date, uint time, double rms2d, uchar status)
+{
+    if (m_dbusId)
+        emit Data(m_lat - lat, m_lon - lon);
+}
+
 QString RouteControls::getDBusPath() const
 {
     return QString().sprintf("/routes/%d", m_dbusId);

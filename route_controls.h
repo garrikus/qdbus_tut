@@ -18,6 +18,11 @@ public:
 public Q_SLOTS:
     void WptSet(double lat, double lon);
     void WptGet(double &lat, double &lon);
+    void processIncomingFix(double lat, double lon, double alt, double v_lat, double v_lon, double v_alt, uint date, uint time, double rms2d, uchar status);
+
+Q_SIGNALS: // SIGNALS
+    void Data(double deltaLat, double deltaLon);
+
 private:
     RouteControlsAdaptor *m_adaptor;
 
