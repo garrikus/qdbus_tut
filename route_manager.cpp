@@ -5,6 +5,10 @@ RouteManager::RouteManager()
     m_adaptor = new RouteManagerAdaptor(this);
     m_nvsdData = new NvsdDataIface("sn.ornap.nvsd", "/navsensor",
                                    QDBusConnection::sessionBus(), this);
+
+    for (unsigned i = 0; i < maxRoutesManaged; ++i)
+        connect(m_nvsdData, SIGNAL(PositionFix(double,double,double,double,double,double,uint,uint,double,uchar)),
+                &routeArray[i], SLOT(processIncomingFix(double,double,double,double,double,double,uint,uint,double,uchar)));
 }
 
 QDBusObjectPath RouteManager::StartNav(double lat, double lon)
