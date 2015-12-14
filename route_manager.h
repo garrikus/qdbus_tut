@@ -3,6 +3,7 @@
 
 #include "route_manager_adp.h"
 #include "route_controls.h"
+#include "nvsd_data_iface.h"
 #include <QObject>
 #include <QDBusContext>
 #include <QDBusObjectPath>
@@ -20,6 +21,7 @@ public Q_SLOTS:
 
 private:
     RouteManagerAdaptor *m_adaptor;
+    NvsdDataIface       *m_nvsdData;
     RouteControls routeArray[maxRoutesManaged];
 };
 

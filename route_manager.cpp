@@ -3,6 +3,8 @@
 RouteManager::RouteManager()
 {
     m_adaptor = new RouteManagerAdaptor(this);
+    m_nvsdData = new NvsdDataIface("sn.ornap.nvsd", "/navsensor",
+                                   QDBusConnection::sessionBus(), this);
 }
 
 QDBusObjectPath RouteManager::StartNav(double lat, double lon)
